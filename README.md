@@ -34,6 +34,9 @@ Open your browser to `http://localhost:3000`, create a room, pick a theme, and s
 - chess.js
 - HTML5 Canvas, vanilla JavaScript, CSS3
 
+## Deployment
+chesshero-production.up.railway.app
+
 ## License
 MIT
 
