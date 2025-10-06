@@ -1,0 +1,28 @@
+{
+  "name": "chess-multiplayer",
+  "version": "1.0.0",
+  "description": "Local web-based multiplayer chess with Node.js, Socket.IO, and chess.js",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "chess",
+    "multiplayer",
+    "socket.io",
+    "chess.js",
+    "node"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chess.js": "^1.4.0",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

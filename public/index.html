@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Chess Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="theme-iron">
+    <div class="background-glow"></div>
+    <div class="app">
+      <header class="header comic-border">
+        <h1 class="logo">
+          <span class="logo-primary">Hero</span>
+          <span class="logo-secondary">Chess</span>
+        </h1>
+        <div class="header-controls">
+          <div id="activeRoomBadge" class="room-badge" hidden>
+            Room <span id="activeRoomId"></span>
+          </div>
+          <button id="backToLobbyBtn" class="comic-button ghost" hidden>Back to Lobby</button>
+        </div>
+      </header>
+
+        <section id="lobbyScreen" class="panel lobby-panel comic-border">
+          <div class="panel-header">
+            <h2>Live Rooms</h2>
+            <p>Challenge opponents in real-time. Create a room or join an electrifying comic showdown.</p>
+          </div>
+          <div class="theme-selector comic-border">
+            <div class="theme-label">Pick Your Superhero Theme</div>
+            <div class="theme-options">
+              <button type="button" class="theme-card" data-theme="iron" aria-pressed="false">
+                <div class="theme-title">Iron Man</div>
+                <div class="theme-swatches">
+                  <span class="swatch swatch-primary"></span>
+                  <span class="swatch swatch-secondary"></span>
+                  <span class="swatch swatch-tertiary"></span>
+                </div>
+              </button>
+              <button type="button" class="theme-card" data-theme="captain" aria-pressed="false">
+                <div class="theme-title">Captain America</div>
+                <div class="theme-swatches">
+                  <span class="swatch swatch-primary"></span>
+                  <span class="swatch swatch-secondary"></span>
+                  <span class="swatch swatch-tertiary"></span>
+                </div>
+              </button>
+              <button type="button" class="theme-card" data-theme="hulk" aria-pressed="false">
+                <div class="theme-title">Hulk</div>
+                <div class="theme-swatches">
+                  <span class="swatch swatch-primary"></span>
+                  <span class="swatch swatch-secondary"></span>
+                  <span class="swatch swatch-tertiary"></span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="lobby-actions">
+            <button id="lobbyCreateBtn" class="comic-button">Create Room</button>
+            <div class="join-inline">
+              <input id="lobbyJoinInput" type="text" placeholder="Enter room code" maxlength="8" />
+              <button id="lobbyJoinBtn" class="comic-button secondary">Join</button>
+            </div>
+        </div>
+        <div id="lobbyEmpty" class="lobby-empty">No rooms yet. Start the first match!</div>
+        <div id="roomList" class="room-grid"></div>
+      </section>
+
+      <section id="gameScreen" class="panel game-panel comic-border" hidden>
+        <div class="game-header">
+          <div id="roomInfo" class="room-meta" hidden>
+            <span>Room <strong id="roomIdText"></strong></span>
+            <button id="copyLinkBtn" class="comic-button ghost small">Copy Invite</button>
+          </div>
+          <div id="statusText" class="status-text">Loading...</div>
+        </div>
+
+        <div class="player-row" id="topPlayerRow">
+          <div class="player-tag" id="topPlayerTag">Opponent</div>
+          <div class="timer" id="top-timer">--:--</div>
+        </div>
+
+        <div class="board-wrapper">
+          <canvas id="board" width="600" height="600"></canvas>
+          <div id="promotionOverlay" class="promotion-overlay" hidden>
+            <div class="card">
+              <div class="title">Choose Promotion</div>
+              <div class="options">
+                <button data-piece="q" class="comic-button small">Queen</button>
+                <button data-piece="r" class="comic-button small">Rook</button>
+                <button data-piece="b" class="comic-button small">Bishop</button>
+                <button data-piece="n" class="comic-button small">Knight</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-row" id="bottomPlayerRow">
+          <div class="player-tag" id="bottomPlayerTag">You</div>
+          <div class="timer" id="bottom-timer">--:--</div>
+        </div>
+
+        <div class="game-actions">
+          <button id="drawBtn" class="comic-button tertiary">Offer Draw</button>
+          <button id="resignBtn" class="comic-button danger">Resign</button>
+          <button id="rematchBtn" class="comic-button secondary" disabled>Rematch</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js" type="module"></script>
+  </body>
+</html>
